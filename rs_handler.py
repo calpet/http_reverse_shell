@@ -13,7 +13,7 @@ class http_handler(BaseHTTPRequestHandler):
         user_input.send_response(200)
         user_input.send_header("Content-type", "text/html")
         user_input.end_headers()
-        user_input.wfile.write(command)
+        user_input.wfile.write(command.encode())
 
     # Gets data from the POST request & prints it out.    
     def do_POST(user_input):

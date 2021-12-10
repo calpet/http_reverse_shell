@@ -1,12 +1,12 @@
-import rs_handler
+from rs_handler import rs_handler
 from http.server import HTTPServer
 
-class http_server:
+class rs_server:
 
     # Run the server with our custom handler.
     def run_server():
         server_class = HTTPServer
-        httpd = server_class((rs_handler.HOST_ADDR, rs_handler.PORT), rs_handler.http_handler)
+        httpd = server_class((rs_handler.HOST_ADDR, rs_handler.PORT), rs_handler)
         try:
             print(f'[!] Server is running on: {rs_handler.HOST_ADDR}:{rs_handler.PORT}!')
             httpd.serve_forever()
@@ -16,4 +16,4 @@ class http_server:
 
 
 if __name__ == '__main__':
-    http_server.run_server()
+    rs_server.run_server()

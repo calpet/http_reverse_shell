@@ -1,11 +1,11 @@
 from http.server import BaseHTTPRequestHandler
 import socket
 
-#   Required constants
-HOST_ADDR = socket.gethostbyname(socket.gethostname())
-PORT = 80
+class rs_handler(BaseHTTPRequestHandler):
 
-class http_handler(BaseHTTPRequestHandler):
+    #   Required constants
+    HOST_ADDR = socket.gethostbyname(socket.gethostname())
+    PORT = 80
 
     # Gets user input and send it to client with request headers
     def do_GET(user_input):

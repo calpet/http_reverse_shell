@@ -1,6 +1,5 @@
-from http.server import BaseHTTPRequestHandler, HTTPServer
+from http.server import BaseHTTPRequestHandler
 import socket
-import os, cgi
 
 #   Required constants
 HOST_ADDR = socket.gethostbyname(socket.gethostname())

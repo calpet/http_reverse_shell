@@ -6,7 +6,7 @@ import socket
 # This is for a localhost connection, change it in case you're gonna use a public IP or another in general.
 URL = 'http://' + socket.gethostbyname(socket.gethostname())
 
-class http_client:
+class rs_client:
 
     def create_connection():
         req = requests.get(URL)
@@ -25,7 +25,7 @@ class http_client:
 if __name__ == '__main__':
     # Prevent connection from terminating after every request.
     while True:
-        http_client.create_connection()
+        rs_client.create_connection()
 
     
         

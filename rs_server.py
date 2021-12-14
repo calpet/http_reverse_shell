@@ -14,6 +14,5 @@ class rs_server:
             print('[!] Server is terminated.')
             httpd.server_close()
 
-
 if __name__ == '__main__':
     rs_server.run_server()

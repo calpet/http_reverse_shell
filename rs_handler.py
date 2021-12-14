@@ -3,7 +3,7 @@ import socket
 
 class rs_handler(BaseHTTPRequestHandler):
 
-    #   Required constants
+    # Required constants
     HOST_ADDR = socket.gethostbyname(socket.gethostname())
     PORT = 80
 
@@ -22,7 +22,5 @@ class rs_handler(BaseHTTPRequestHandler):
         request_length = int(user_input.headers['Content-Length'])
         request_data = user_input.rfile.read(request_length)
         print(request_data)
-        
-    
 
         

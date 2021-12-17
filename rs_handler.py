@@ -1,5 +1,5 @@
 from http.server import BaseHTTPRequestHandler
-import os, cgi
+import cgi
 from config import App
 
 class rs_handler(BaseHTTPRequestHandler):
@@ -14,7 +14,7 @@ class rs_handler(BaseHTTPRequestHandler):
 
     # Gets data from the POST request & prints it out.    
     def do_POST(user_input):
-        if user_input.path == '/store':
+        if user_input.path == '/store' or user_input.path == '/logger':
             try:
                 # Get the content type headers & check if they're the right type.
                 ctype, pdict = cgi.parse_header(user_input.headers.get_content_type())

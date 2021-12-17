@@ -1,10 +1,12 @@
 import socket
+
 class App:
     __conf = {
         'URL': 'http://' + socket.gethostbyname(socket.gethostname()),
         'IP_ADDR': socket.gethostbyname(socket.gethostname()),
         'PORT': 80,
-        'OUTPUTFILEPATH': 'C:\\Users\\Calin\\Bureaublad\\output.txt'
+        'OUTPUTFILEPATH': 'C:\\Users\\Calin\\Bureaublad\\output.txt',
+        'KEYLOGGERFILE': 'key_log.txt'
     }
 
     __setters = ['OUTPUTFILEPATH']

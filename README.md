@@ -9,7 +9,7 @@ IP_ADDRESS
 OUTPUTFILEPATH
 ```
 ## How to use:
-After you've managed to "infect" the victim, you can use the normal OS commands used by Windows (not tested on Mac OS/Linux). There are also custom commands: 
+After you've managed to "infect" the victim, you have to turn on `rs_server.py`. Then, the client will connect to the server immediately. Once the connection has been made, you can see `Shell>` in the terminal window, where you can use the normal console commands used by Windows (not tested on Mac OS/Linux). There are also custom commands: 
 ```
 stop
 grab#filename
